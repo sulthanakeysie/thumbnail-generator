@@ -1,0 +1,12 @@
+.image-list-wrapper {
+  display: flex;
+  padding: 3rem;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.image-card-wrapper {
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  height: 150px;
+  width: 150px;
+}

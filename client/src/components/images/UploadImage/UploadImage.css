@@ -1,0 +1,12 @@
+.upload-image-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.image-upload-form {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
