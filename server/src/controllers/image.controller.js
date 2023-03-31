@@ -21,6 +21,7 @@ export const uploadImage = async (req, res) => {
   Promise.all(promises)
     .then((thumbnails) => {
       const image = new ImageSchema({
+        user_id: req.user,
         originalImage: imagePath,
         thumbnails: thumbnails,
       });
@@ -37,7 +38,7 @@ export const uploadImage = async (req, res) => {
 
 export const getUploadedImages = async (req, res) => {
   try {
-    const images = await ImageSchema.find();
+    const images = await ImageSchema.find({ user_id: req.user });
     res.status(200).json(images);
   } catch (err) {
     res.status(500).send("Error retrieving images");

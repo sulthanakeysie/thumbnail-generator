@@ -1,4 +1,5 @@
 import express from "express";
+import { authenticateApiKey } from "../controllers/auth.controller.js";
 import {
   uploadImage,
   getImageById,
@@ -6,8 +7,8 @@ import {
 } from "../controllers/image.controller.js";
 const router = express.Router();
 
-router.get("/", getUploadedImages);
-router.get("/:id", getImageById);
-router.post("/upload", uploadImage);
+router.get("/", authenticateApiKey, getUploadedImages);
+router.get("/:id", authenticateApiKey, getImageById);
+router.post("/upload", authenticateApiKey, uploadImage);
 
 export default router;
