@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { uploadImage } from "../../../services/ImageService";
-import Header from "../../header/Header";
 import { toast } from "react-toastify";
 import "./UploadImage.css";
 
@@ -27,7 +26,6 @@ export default function UploadImage() {
 
   return (
     <div className="upload-image-page-wrapper">
-      <Header />
       <form
         className="image-upload-form"
         onSubmit={handleFormSubmit}

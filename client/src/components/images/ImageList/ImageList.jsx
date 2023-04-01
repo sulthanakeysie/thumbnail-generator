@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import { Header } from "../../../components";
 import { getUploadedImages } from "../../../services/ImageService";
 import "./ImageList.css";
 
@@ -24,25 +23,22 @@ export default function ImageList() {
   };
 
   return (
-    <div>
-      <Header />
-      <div className="image-list-wrapper">
-        {uploadedImages.map((image, i) => (
-          <div
-            key={i}
-            className="image-card-wrapper"
-            onClick={() => viewThumbnails(image)}
-          >
-            <img
-              width="100%"
-              height={"100%"}
-              src={`${import.meta.env.VITE_API_URL}photos/${image.originalImage.slice(
-                8
-              )}`}
-            />
-          </div>
-        ))}
-      </div>
+    <div className="image-list-wrapper">
+      {uploadedImages.map((image, i) => (
+        <div
+          key={i}
+          className="image-card-wrapper"
+          onClick={() => viewThumbnails(image)}
+        >
+          <img
+            width="100%"
+            height={"100%"}
+            src={`${
+              import.meta.env.VITE_API_URL
+            }photos/${image.originalImage.slice(8)}`}
+          />
+        </div>
+      ))}
     </div>
   );
 }

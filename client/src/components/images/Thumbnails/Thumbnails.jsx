@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import Header from "../../header/Header";
 import "./Thumbnails.css";
 
 const Thumbnails = () => {
@@ -13,7 +12,6 @@ const Thumbnails = () => {
 
   return (
     <div>
-      <Header />
       <h1>Thumbnails Generated</h1>
       {thumbnails.map((thumbnail) => (
         <div className="thumbnail">
