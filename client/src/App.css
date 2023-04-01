@@ -3,4 +3,9 @@
   width: 100vw;
   height: 100vh;
 }
+.private-route-wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 

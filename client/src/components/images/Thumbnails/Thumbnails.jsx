@@ -13,15 +13,17 @@ const Thumbnails = () => {
   return (
     <div>
       <h1>Thumbnails Generated</h1>
-      {thumbnails.map((thumbnail) => (
-        <div className="thumbnail">
-          <img
-            src={`${
-              import.meta.env.VITE_API_URL
-            }thumbnails/${thumbnail.path.slice(15)}`}
-          />
-        </div>
-      ))}
+      <div>
+        {thumbnails.map((thumbnail, i) => (
+          <div className="thumbnail" key={i}>
+            <img
+              src={`${
+                import.meta.env.VITE_API_URL
+              }thumbnails/${thumbnail.path.slice(15)}`}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

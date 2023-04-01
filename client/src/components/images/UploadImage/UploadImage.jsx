@@ -38,7 +38,7 @@ export default function UploadImage() {
           accept="image/*"
           onChange={handleImageUpload}
         />
-        <button type="submit">Upload</button>
+        <button type="submit" className="upload-button-wrapper">Upload</button>
       </form>
     </div>
   );
