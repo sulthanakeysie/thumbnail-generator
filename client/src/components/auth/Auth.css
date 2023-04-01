@@ -6,6 +6,7 @@
 }
 
 .form-group-wrapper {
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -33,7 +34,6 @@ input {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 3px;
-  margin-bottom: 1rem;
 }
 
 button[type="submit"] {
@@ -46,6 +46,7 @@ button[type="submit"] {
 }
 
 .error {
+  text-align: left;
   font-size: 0.875rem;
   color: red;
 }
