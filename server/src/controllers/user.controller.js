@@ -41,7 +41,7 @@ const login = async (req, res) => {
       if (isMatched) {
         return res.status(200).json({
           success: true,
-          data: user,
+          user: user,
         });
       }
     }

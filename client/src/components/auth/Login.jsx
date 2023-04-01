@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import { login } from "../../services/AuthService";
+import { toast } from "react-toastify";
 import "./Auth.css";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -30,19 +34,27 @@ export default function Login() {
     }
   };
 
-  const handleSubmit = (event) => {
+  const Login = (event) => {
     event.preventDefault();
 
     handleEmailError();
     handlePasswordError();
 
     if (!emailError && !passwordError) {
-      console.log("Submitting form...");
+      login({ email, password })
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem("api_key", res.data.user.api_key);
+          navigate("/images");
+        })
+        .catch((err) => {
+          toast.error(err.message);
+        });
     }
   };
   return (
     <div className="form-page-wrapper">
-      <form className="auth-form-wrapper" onSubmit={handleSubmit}>
+      <form className="auth-form-wrapper" onSubmit={Login}>
         <h2>Login</h2>
         <div className="form-group-wrapper">
           <label htmlFor="email">Email:</label>

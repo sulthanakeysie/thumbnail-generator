@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.get("/", authenticateApiKey, getUploadedImages);
 router.get("/:id", authenticateApiKey, getImageById);
-router.post("/upload", authenticateApiKey, uploadImage);
+router.post("/", authenticateApiKey, uploadImage);
 
 export default router;

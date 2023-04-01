@@ -1,12 +1,16 @@
 import ImageSchema from "../models/image.model.js";
 import sharp from "sharp";
 import path from "path";
+import fs from 'fs'
 
 export const uploadImage = async (req, res) => {
   const imagePath = req.file.path;
-  const publicPath = "src/public/";
+  const publicPath = "src/thumbnails/";
 
   const sizes = [100, 200, 300];
+  if (!fs.existsSync(publicPath)) {
+    fs.mkdirSync(publicPath);
+  }
   const promises = sizes.map((size) => {
     const filename = path.basename(imagePath);
     const thumbnailPath = publicPath + size + "-" + filename;
@@ -39,7 +43,7 @@ export const uploadImage = async (req, res) => {
 export const getUploadedImages = async (req, res) => {
   try {
     const images = await ImageSchema.find({ user_id: req.user });
-    res.status(200).json(images);
+    res.status(200).json({ images: images });
   } catch (err) {
     res.status(500).send("Error retrieving images");
   }

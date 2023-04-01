@@ -12,6 +12,7 @@ dist
 dist-ssr
 uploads
 public
+thumbnails
 *.local
 
 # Editor directories and files

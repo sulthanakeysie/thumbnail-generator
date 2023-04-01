@@ -14,8 +14,11 @@ const port = process.env.PORT || 1337;
 const upload = multer({ dest: "uploads/" });
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use("/photos", express.static("uploads"));
+app.use("/thumbnails", express.static("src/thumbnails"));
+
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 connection;
 

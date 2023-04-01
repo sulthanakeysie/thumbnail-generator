@@ -1,5 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import Header from "../../header/Header";
+import "./Thumbnails.css";
 
-export default function Thumbnails() {
-  return <div>Thumbnails</div>;
-}
+const Thumbnails = () => {
+  const location = useLocation();
+  const [thumbnails, setThumbnails] = useState([]);
+
+  useEffect(() => {
+    setThumbnails(location.state.thumbnails);
+  }, []);
+
+  return (
+    <div>
+      <Header />
+      <h1>Thumbnails Generated</h1>
+      {thumbnails.map((thumbnail) => (
+        <div className="thumbnail">
+          <img
+            src={`${
+              import.meta.env.VITE_API_URL
+            }thumbnails/${thumbnail.path.slice(15)}`}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Thumbnails;
